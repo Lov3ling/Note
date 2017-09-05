@@ -204,61 +204,57 @@ Facades的getFacadeAccessor方法返回一个字符串,
 
 app/facades/TestFacade.php
 
+    `<?php`
+
+    `namespace App\Facades;`
+
+    `use Illuminate\Support\Facades\Facade;`
+
+    `class TestFacades extends Facade{`
+
+    ```
+    public static function getFacadeAccessor\(\)
+
+    {
+
+       return "test";       /\*调用服务提供者绑定的字符串\*/
+
+    }
+    ```
+
+    `}`
+
+然后创建app/Services/文件夹存放自己编写的服务
+
+app/Services/Test.php
+
 ```````````
 
 `<?php`
 
-`namespace App\Facades;`
+`namespace App\Services;`
 
-`use Illuminate\Support\Facades\Facade;`
-
-`class TestFacades extends Facade{`
+`interface Test{`
 
 ```
-public static function getFacadeAccessor\(\)
-
-{
-
-   return "test";       /\*调用服务提供者绑定的字符串\*/
-
-}
+public function run\($string\);
 ```
 
 `}`
 
 ```````````
 
-然后创建app/Services/文件夹存放自己编写的服务
-
-app/Services/Test.php
-
-\`\`\`
-
-&lt;?php
-
-namespace App\Services;
-
-interface Test{
-
-```
-public function run\($string\);
-```
-
-}
-
-\`\`\`
-
 app/Services/TestClass.php继承上面定义的接口
 
-\`\`\`
+```````````
 
-&lt;?php
+`<?php`
 
-namespace App\Services;
+`namespace App\Services;`
 
-use App\Services\Test;
+`use App\Services\Test;`
 
-class TestClass implements Test{
+`class TestClass implements Test{`
 
 ```
 public function run\($string\){
@@ -268,9 +264,9 @@ public function run\($string\){
 }
 ```
 
-}
+`}`
 
-\`\`\`
+```````````
 
 编写一个服务提供者
 
