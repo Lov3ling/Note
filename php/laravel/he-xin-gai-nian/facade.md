@@ -312,9 +312,9 @@ php artisan make:provider TestServiceProvider
 
 \`\`\`
 
-&lt;?php
+`<?php`
 
-'provides'=\[
+`'provides'=[`
 
 ```
 App\Providers\TestServiceProvider::class,
@@ -322,31 +322,27 @@ App\Providers\TestServiceProvider::class,
 \],
 ```
 
-'aliasess'=&gt;\[
+`'aliasess'=>[`
 
 ```
 'MyTest'=&gt;App\Facades\TestFacades::class,
 ```
 
-\]
+`]`
 
-\`\`\`
+```````````
 
 最后创建路由测试
 
-```````````
+    `<?php`
 
-`<?php`
+    `Route::get('test',function(){`
 
-`Route::get('test',function(){`
+    ```
+    MyTest::run\("this is Test"\);
+    ```
 
-```
-MyTest::run\("this is Test"\);
-```
-
-`});`
-
-```````````
+    `});`
 
 Facade运行流程
 
