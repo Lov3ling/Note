@@ -310,7 +310,7 @@ php artisan make:provider TestServiceProvider
 
 在config/app.php的provides数组中注册服务提供者以及在aliases数组中注册Facade
 
-\`\`\`
+```````````
 
 `<?php`
 
@@ -330,15 +330,14 @@ App\Providers\TestServiceProvider::class,
 
 `]`
 
-```````````
-
+```\`\`\`\`\`\`\`\`
 最后创建路由测试
 
     `<?php`
 
     `Route::get('test',function(){`
+```
 
-    ```
     MyTest::run\("this is Test"\);
     ```
 
