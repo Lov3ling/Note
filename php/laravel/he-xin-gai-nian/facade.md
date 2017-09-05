@@ -266,51 +266,47 @@ php artisan make:provider TestServiceProvider
 
 在服务提供者的Register方法中注册一个test字符串 返回刚才定义的TestClass类的单例
 
-```````````
+    `<?php`
 
-`<?php`
+    `namespace App\Providers;`
 
-`namespace App\Providers;`
+    `use App\Services\TestClass;`
 
-`use App\Services\TestClass;`
+    `use App\User;`
 
-`use App\User;`
+    `use Illuminate\Support\ServiceProvider;`
 
-`use Illuminate\Support\ServiceProvider;`
+    `class TestServiceProvider extends ServiceProvider`
 
-`class TestServiceProvider extends ServiceProvider`
+    `{`
 
-`{`
+    ```
+    public function boot\(\)
 
-```
-public function boot\(\)
+    {
 
-{
-
-    //
+        //
 
 
 
-}
+    }
 
 
 
-public function register\(\)
+    public function register\(\)
 
-{
+    {
 
-    $this-&gt;app-&gt;singleton\('test',function \($app\){
+        $this-&gt;app-&gt;singleton\('test',function \($app\){
 
-       return new TestClass\(\);  /\* 当调用test时返回一个TestClass类\*/
+           return new TestClass\(\);  /\* 当调用test时返回一个TestClass类\*/
 
-    }\);
+        }\);
 
-}
-```
+    }
+    ```
 
-`}`
-
-```````````
+    `}`
 
 在config/app.php的provides数组中注册服务提供者以及在aliases数组中注册Facade
 
@@ -338,19 +334,19 @@ App\Providers\TestServiceProvider::class,
 
 最后创建路由测试
 
-\`\`\`
+```````````
 
-&lt;?php
+`<?php`
 
-Route::get\('test',function\(\){
+`Route::get('test',function(){`
 
 ```
 MyTest::run\("this is Test"\);
 ```
 
-}\);
+`});`
 
-\`\`\`
+```````````
 
 Facade运行流程
 
