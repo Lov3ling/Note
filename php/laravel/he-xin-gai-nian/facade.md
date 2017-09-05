@@ -228,45 +228,37 @@ app/facades/TestFacade.php
 
 app/Services/Test.php
 
-```````````
+    `<?php`
 
-`<?php`
+    `namespace App\Services;`
 
-`namespace App\Services;`
+    `interface Test{`
 
-`interface Test{`
+    ```
+    public function run\($string\);
+    ```
 
-```
-public function run\($string\);
-```
-
-`}`
-
-```````````
+    `}`
 
 app/Services/TestClass.php继承上面定义的接口
 
-```````````
+    `<?php`
 
-`<?php`
+    `namespace App\Services;`
 
-`namespace App\Services;`
+    `use App\Services\Test;`
 
-`use App\Services\Test;`
+    `class TestClass implements Test{`
 
-`class TestClass implements Test{`
+    ```
+    public function run\($string\){
 
-```
-public function run\($string\){
+        echo $string;
 
-    echo $string;
+    }
+    ```
 
-}
-```
-
-`}`
-
-```````````
+    `}`
 
 编写一个服务提供者
 
@@ -274,21 +266,21 @@ php artisan make:provider TestServiceProvider
 
 在服务提供者的Register方法中注册一个test字符串 返回刚才定义的TestClass类的单例
 
-\`\`\`
+```````````
 
-&lt;?php
+`<?php`
 
-namespace App\Providers;
+`namespace App\Providers;`
 
-use App\Services\TestClass;
+`use App\Services\TestClass;`
 
-use App\User;
+`use App\User;`
 
-use Illuminate\Support\ServiceProvider;
+`use Illuminate\Support\ServiceProvider;`
 
-class TestServiceProvider extends ServiceProvider
+`class TestServiceProvider extends ServiceProvider`
 
-{
+`{`
 
 ```
 public function boot\(\)
@@ -316,9 +308,9 @@ public function register\(\)
 }
 ```
 
-}
+`}`
 
-\`\`\`
+```````````
 
 在config/app.php的provides数组中注册服务提供者以及在aliases数组中注册Facade
 
