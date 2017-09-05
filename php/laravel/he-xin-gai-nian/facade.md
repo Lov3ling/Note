@@ -62,15 +62,15 @@ public function run\($string\);
 
 app/Services/TestClass.php继承上面定义的接口
 
-\`\`\`
+```````````
 
-&lt;?php
+`<?php`
 
-namespace App\Services;
+`namespace App\Services;`
 
-use App\Services\Test;
+`use App\Services\Test;`
 
-class TestClass implements Test{
+`class TestClass implements Test{`
 
 ```
 public function run\($string\){
@@ -80,9 +80,9 @@ public function run\($string\){
 }
 ```
 
-}
+`}`
 
-\`\`\`
+```````````
 
 编写一个服务提供者
 
@@ -90,21 +90,21 @@ php artisan make:provider TestServiceProvider
 
 在服务提供者的Register方法中注册一个test字符串 返回刚才定义的TestClass类的单例
 
-\`\`\`
+```````````
 
-&lt;?php
+`<?php`
 
-namespace App\Providers;
+`namespace App\Providers;`
 
-use App\Services\TestClass;
+`use App\Services\TestClass;`
 
-use App\User;
+`use App\User;`
 
-use Illuminate\Support\ServiceProvider;
+`use Illuminate\Support\ServiceProvider;`
 
-class TestServiceProvider extends ServiceProvider
+`class TestServiceProvider extends ServiceProvider`
 
-{
+`{`
 
 ```
 public function boot\(\)
@@ -132,17 +132,17 @@ public function register\(\)
 }
 ```
 
-}
+`}`
 
-\`\`\`
+```````````
 
 在config/app.php的provides数组中注册服务提供者以及在aliases数组中注册Facade
 
-\`\`\`
+```````````
 
-&lt;?php
+`<?php`
 
-'provides'=\[
+`'provides'=[`
 
 ```
 App\Providers\TestServiceProvider::class,
@@ -150,31 +150,31 @@ App\Providers\TestServiceProvider::class,
 \],
 ```
 
-'aliasess'=&gt;\[
+`'aliasess'=>[`
 
 ```
 'MyTest'=&gt;App\Facades\TestFacades::class,
 ```
 
-\]
+`]`
 
-\`\`\`
+```````````
 
 最后创建路由测试
 
-\`\`\`
+```````````
 
-&lt;?php
+`<?php`
 
-Route::get\('test',function\(\){
+`Route::get('test',function(){`
 
 ```
 MyTest::run\("this is Test"\);
 ```
 
-}\);
+`});`
 
-\`\`\`
+```````````
 
 Facade运行流程
 
@@ -310,33 +310,28 @@ php artisan make:provider TestServiceProvider
 
 在config/app.php的provides数组中注册服务提供者以及在aliases数组中注册Facade
 
-```````````
-
+```\`\`\`\`\`\`\`\`
 `<?php`
 
 `'provides'=[`
-
-```
-App\Providers\TestServiceProvider::class,
-
-\],
 ```
 
-`'aliasess'=>[`
+`App\Providers\TestServiceProvider::class,`
 
-```
-'MyTest'=&gt;App\Facades\TestFacades::class,
-```
+`],`
 
-`]`
+    `'aliasess'=>[`
 
-```\`\`\`\`\`\`\`\`
-最后创建路由测试
+`'MyTest'=>App\Facades\TestFacades::class,`
 
-    `<?php`
+    `]`
 
-    `Route::get('test',function(){`
-```
+    ```\`\`\`\`\`\`\`\`
+    最后创建路由测试
+
+        `<?php`
+
+        `Route::get('test',function(){`
 
     MyTest::run\("this is Test"\);
     ```
